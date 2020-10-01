@@ -1,0 +1,22 @@
+//$directionには向きを入力(top or right or bottom or left)
+
+@mixin triangle($direction, $width, $height, $color){
+  width: 0;
+  height: 0;
+  border-style: solid;
+  $valWidth: $width / 2;
+  $valHeight: $height / 2;
+  @if ($direction == top) {
+    border-width: 0 $valWidth $height $valWidth;
+    border-color: transparent transparent $color transparent;
+  } @else if ($direction == left) {
+    border-width: $valHeight $width $valHeight 0;
+    border-color: transparent $color transparent transparent;
+  } @else if ($direction == right) {
+    border-width: $valHeight 0 $valHeight $width;
+    border-color: transparent transparent transparent $color;
+  } @else if ($direction == bottom) {
+    border-width: $height $valWidth 0 $valWidth;
+    border-color: $color transparent transparent transparent;
+  }
+}

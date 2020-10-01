@@ -1,0 +1,14 @@
+@mixin aspect-ratio($width, $height, $pseudoElement: before) {
+  $pseudoElements: before, after;
+  $checkPseudoElementName: index($pseudoElements, $pseudoElement);
+
+  @if ($checkPseudoElementName==null) {
+    @error "#{$pseudoElement}は無効な値です。"
+  }
+
+  &::#{$pseudoElement} {
+    display: block;
+    padding-top: percentage($width/$height);
+    content: '';
+  }
+}

@@ -1,0 +1,15 @@
+<%
+const param = {
+  title: 'トップページ',
+  path: './'
+}
+%>
+<%- include(`${param.path}@include/_head`, {param: param}) %>
+<body>
+  
+  <main class="main" id="main">
+    <%- example.title %>
+  </main>
+  <img src="../img/main_image.jpg" alt="">
+</body>
+<%- include(`${param.path}@include/_footer`, {param: param}) %>

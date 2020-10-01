@@ -1,0 +1,44 @@
+// **
+// * text-align調整用ヘルパークラス
+// * [example]
+// *   class="_t-center" -> text-align: center
+// *   class="_t-left t-md-center" -> [md以上] text-align: center
+// ************************************************
+$configMap: (
+  prefix: _t,
+  propName: text-align,
+  props: (
+    left: left,
+    right: right,
+    center: center,
+    justify: justify,
+  )
+);
+$isImportant: false;
+
+@include foreach-helper($configMap, $isImportant);
+@include media-foreach-helper($configMap, $isImportant);
+
+// **
+// * text-decoration調整用ヘルパークラス
+// * [example]
+// *   class="_t-under" -> text-decoration: underline
+// ************************************************
+$configMap: (
+  prefix: _t,
+  propName: text-decoration,
+  props: (
+    through: line-through,
+    under: underline,
+    over: over,
+    none: none,
+  )
+);
+$isImportant: false;
+
+@include foreach-helper($configMap, $isImportant);
+
+._t-nobr {
+  display: inline-block;
+  white-space: nowrap;
+}

@@ -1,0 +1,99 @@
+
+$fonts: (
+  gothic: (
+    family: "'游ゴシック体', 'Yu Gothic', YuGothic, 'メイリオ', Meiryo, 'ヒラギノ角ゴ Pro', 'Hiragino Kaku Gothic Pro', 'メイリオ', Meiryo, 'MS Pゴシック', 'MS PGothic', sans-serif",
+    weights: (
+      thin: 100,
+      normal: 400,
+      bold: 700
+    )
+  ),
+  mincho: (
+    family: "'Noto Serif JP','游明朝体', 'Yu Mincho', YuMincho, 'ヒラギノ明朝 Pro', 'Hiragino Mincho Pro', 'MS P明朝', 'MS PMincho', serif",
+    weights: (
+      thin: 100,
+      normal: 400,
+      bold: 700
+    )
+  ),
+  sans-serif: (
+    family: "'Agenda', 'Lato', 'Arial', sans-serif",
+    weights: (
+      thin: 100,
+      normal: 400,
+      bold: 700
+    )
+  ),
+  arial: (
+    family: "'Arial', sans-serif",
+    weights: (
+      thin: 100,
+      normal: 400,
+      bold: 700
+    )
+  ),
+  script: (
+    family: "'Great Vibes', serif",
+    weights: (
+      normal: 400,
+    )
+  ),
+  Folk:(
+    family: "Folk",
+    weights: (
+      normal: 400,
+      bold: 700,
+    )
+  )
+);
+
+// **
+// * font-familyを取得する
+// * @param {Stirng} $fonts-key $fontsのキー名
+// * @return {String} font-family
+// ************************************************
+@function font-family($fonts-key) {
+  $font: map-get($fonts, $fonts-key);
+  @return unquote(map-get($font, family));
+}
+
+// **
+// * font-weightを取得する
+// * @param {Stirng} $fonts-key $fontsのキー名
+// * @return {String} font-weight
+// ************************************************
+@function font-weight($fonts-key, $weights-key) {
+  $font: map-get($fonts, $fonts-key);
+  $font-weights: map-get($font, weights);
+  @return map-get($font-weights, $weights-key)
+}
+
+// **
+// * フォントを一括設定する
+// * @param {Stirng} $fonts-key $fontsのキー名
+// * @param {String} $weights-key $fontsのweightsのキー名
+// ************************************************
+@mixin font($fonts-key, $weights-key: normal, $font-style: null) {
+  font-family: font-family($fonts-key);
+  font-weight: font-weight($fonts-key, $weights-key);
+  @if ($font-style != null) {
+    font-style: $font-style;
+  }
+}
+
+// **
+// * フォントウェイトを設定する
+// * @param {Stirng} $fonts-key $fontsのキー名
+// * @param {String} $weights-key $fontsのweightsのキー名
+// ************************************************
+@mixin font-weight($fonts-key, $weights-key: normal, $font-style: null) {
+  font-weight: font-weight($fonts-key, $weights-key);
+}
+
+// **
+// * フォントファミリーを設定する
+// * @param {Stirng} $fonts-key $fontsのキー名
+// ************************************************
+@mixin font-family($fonts-key) {
+  font-family: font-family($fonts-key);
+}

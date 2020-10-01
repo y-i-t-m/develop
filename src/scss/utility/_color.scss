@@ -1,0 +1,29 @@
+// **
+// * color調整用ヘルパークラス
+// * [example]
+// *   class="_c-main" -> color: ...
+// ************************************************
+$configMap: (
+  prefix: _c,
+  propName: color,
+  props: $colors
+);
+$isImportant: false;
+
+@include foreach-helper($configMap, $isImportant);
+// @include media-foreach-helper($configMap, $isImportant);
+
+// **
+// * background-color調整用ヘルパークラス
+// * [example]
+// *   class="_bg-main" -> background-color: ...
+// ************************************************
+$configMap: (
+  prefix: _bg,
+  propName: background-color,
+  props: $colors
+);
+$isImportant: false;
+
+@include foreach-helper($configMap, $isImportant);
+// @include media-foreach-helper($configMap, $isImportant);

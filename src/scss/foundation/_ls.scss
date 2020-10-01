@@ -1,0 +1,17 @@
+$default-letter-spacing: 50 !default;
+
+// **
+// * letter-spacing変換
+// * @param {?Interger} $comp-letter-spacing カンプ上の字間 0 - 1000
+// ************************************************ */
+@function ls($comp-letter-spacing: $default-letter-spacing) {
+	@return $comp-letter-spacing / 1000 * 1em;
+}
+
+// **
+// * letter-spacing変換
+// * @param {?Interger} $comp-letter-spacing カンプ上の字間 0 - 1000
+// ************************************************ */
+@mixin ls($comp-letter-spacing) {
+	letter-spacing: ls($comp-letter-spacing);
+}

@@ -1,0 +1,135 @@
+$breakpoints: (
+  sm: (width: 600px,
+  ),
+  md: (width: 768px,
+  ),
+  ml: (width: 960px,
+  ),
+  lg: (width: 1280px,
+  ),
+);
+
+// **
+// * メディアクエリ screen and min-width
+// * @param {Stirng} $min-key $breakpointsのキー
+// * @content メディアクエリ内に出力
+// ************************************************
+@mixin breakpoint($min-key) {
+  $query: "";
+
+  @if map-has-key($breakpoints, $min-key) {
+    $query: map-get(map-get($breakpoints, $min-key), width);
+  }
+
+  @else {
+    $query: $min-key;
+  }
+
+  @media screen and (min-width: $query) {
+    @content;
+  }
+}
+
+// **
+// * メディアクエリ screen and max-width
+// * @param {Stirng} $min-key $breakpointsのキー
+// ************************************************
+@mixin breakpoint-down($max-key) {
+  $query: "";
+
+  @if map-has-key($breakpoints, $max-key) {
+    $query: map-get(map-get($breakpoints, $max-key), width)-0.5px;
+  }
+
+  @else {
+    $query: $max-key;
+  }
+
+  @media screen and (max-width: $query) {
+    @content;
+  }
+}
+
+// **
+// * ヘルパークラス生成用ループ
+// * @param {Map} $configMap 設定
+// *   $configMap
+// *    prefix: // クラス名の先頭につける識別子,
+// *    propName: // 変更対象のプロパティ名,
+// *    props: ( // prop-key: クラス名の最後につける識別子, prop-value: プロパティの値
+// *    prop-key: prop-value,
+// *   )
+// * @param {Boolean} $isImportant !importantにする場合true
+// ************************************************
+@mixin foreach-helper($configMap, $isImportant:false) {
+  $prefix: map-get($configMap, prefix);
+  $propName: map-get($configMap, propName);
+  $props: map-get($configMap, props);
+
+  @each $prop-key,
+  $prop-value in $props {
+    .#{$prefix}-#{$prop-key} {
+      @if $isImportant {
+        #{$propName}: $prop-value !important;
+      }
+
+      @else {
+        #{$propName}: $prop-value;
+      }
+    }
+  }
+}
+
+// **
+// * ヘルパークラス生成用ブレイクポイントループ
+// * @param {Map} $configMap 設定
+// *   $configMap
+// *    prefix: // クラス名の先頭につける識別子,
+// *    propName: // 変更対象のプロパティ名,
+// *    props: ( // prop-key: クラス名の最後につける識別子, prop-value: プロパティの値
+// *    prop-key: prop-value,
+// *   )
+// * @param {Boolean} $isImportant !importantにする場合true
+// ************************************************
+@mixin media-foreach-helper($configMap, $isImportant: false) {
+  $prefix: map-get($configMap, prefix);
+
+  @each $bp-key,
+  $bp-value in $breakpoints {
+    @include breakpoint($bp-key) {
+      @include foreach-helper(map-merge($configMap, (prefix: #{$prefix}-#{$bp-key})), $isImportant);
+    }
+  }
+}
+
+// **
+// * 規定サイズのコンテナを生成
+// * @param {Interger} $container-max-width コンテナの最大サイズを制限
+// * @param {Boolean} $is-static trueで段階的に収縮
+// ************************************************
+@mixin container($container-max-width: $container-max-width, $is-static: false) {
+  $bp-prev: null;
+
+  margin: auto;
+  width: 100%;
+  padding-left: $min-padding;
+  padding-right: $min-padding;
+
+  @each $bp-key,
+  $bp-value in $breakpoints {
+    @include breakpoint($bp-key) {
+      padding-left: map-get($bp-value, padding);
+      padding-right: map-get($bp-value, padding);
+
+      @if ($is-static and $bp-prev) {
+        max-width: min(map-get($bp-value, width), $container-max-width + map-get($bp-value, padding) * 2);
+      }
+
+      @else {
+        max-width: $container-max-width + map-get($bp-value, padding) * 2;
+      }
+    }
+
+    $bp-prev: $bp-value;
+  }
+}

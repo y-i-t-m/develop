@@ -1,0 +1,105 @@
+// * margin調整用ヘルパークラス
+// * [example]
+// *   class="_pt-0" -> padding-left: 0;
+// *   class="_pt-md-auto" -> [md以上] padding-top: auto;
+// ************************************************
+$configMap: (
+  prefix: _pt,
+  propName: padding-top,
+  props: (
+    0: 0,
+    8: rem(8),
+    16: rem(16),
+    32: rem(32),
+    40: rem(40),
+    48: rem(48),
+    64: rem(64),
+    72: rem(72),
+    80: rem(80),
+    96: rem(96),
+    120: rem(120),
+  )
+);
+$isImportant: true;
+
+@include foreach-helper($configMap, $isImportant);
+@include media-foreach-helper($configMap, $isImportant);
+
+// * margin調整用ヘルパークラス
+// * [example]
+// *   class="_pr-0" -> padding-left: 0;
+// *   class="_pr-md-auto" -> [md以上] padding-right: auto;
+// ************************************************
+$configMap: (
+  prefix: _pr,
+  propName: padding-right,
+  props: (
+    0: 0,
+    8: rem(8),
+    16: rem(16),
+    32: rem(32),
+    40: rem(40),
+    48: rem(48),
+    64: rem(64),
+    72: rem(72),
+    80: rem(80),
+    96: rem(96),
+  )
+);
+$isImportant: true;
+
+@include foreach-helper($configMap, $isImportant);
+@include media-foreach-helper($configMap, $isImportant);
+
+// * margin調整用ヘルパークラス
+// * [example]
+// *   class="_pb-0" -> padding-left: 0;
+// *   class="_pb-md-auto" -> [md以上] padding-bottom: auto;
+// ************************************************
+$configMap: (
+  prefix: _pb,
+  propName: padding-bottom,
+  props: (
+    0: 0,
+    8: rem(8),
+    16: rem(16),
+    32: rem(32),
+    40: rem(40),
+    48: rem(48),
+    64: rem(64),
+    72: rem(72),
+    80: rem(80),
+    96: rem(96),
+    120: rem(120),
+  )
+);
+$isImportant: true;
+
+@include foreach-helper($configMap, $isImportant);
+@include media-foreach-helper($configMap, $isImportant);
+
+// * margin調整用ヘルパークラス
+// * [example]
+// *   class="_pl-0" -> padding-left: 0;
+// *   class="_pl-md-auto" -> [md以上] padding-left: auto;
+// ************************************************
+$configMap: (
+  prefix: _pl,
+  propName: padding-left,
+  props: (
+    0: 0,
+    8: rem(8),
+    16: rem(16),
+    32: rem(32),
+    40: rem(40),
+    48: rem(48),
+    64: rem(64),
+    72: rem(72),
+    80: rem(80),
+    96: rem(96),
+  )
+);
+$isImportant: true;
+
+@include foreach-helper($configMap, $isImportant);
+@include media-foreach-helper($configMap, $isImportant);

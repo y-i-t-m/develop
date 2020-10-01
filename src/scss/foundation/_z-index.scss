@@ -1,0 +1,26 @@
+$z-index-list: (
+  back: -1,
+  main: 1,
+  hero: 5,
+  header: 50,
+);
+
+// **
+// * z-indexを取得する
+// * @param {Stirng} $key $z-index-listのキー
+// * @param {?Interger} $offset $z-indexに加減する
+// * @return {Interger} z-indexの値
+// ************************************************
+@function z-index($key, $offset: 0) {
+  @return map-get($z-index-list, $key)+$offset;
+}
+
+// **
+// * z-indexのスタイルをtranslateZと一緒に指定する
+// * @param {Stirng} $key $z-index-listのキー
+// * @param {?Interger} $offset $z-indexに加減する
+// ************************************************
+@mixin z-index($key, $offset: 0) {
+  z-index: z-index($key, $offset);
+  transform: translateZ(z-index($key, $offset));
+}

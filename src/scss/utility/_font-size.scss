@@ -1,0 +1,29 @@
+// * font-size調整用ヘルパークラス
+// * [example]
+// *   class="_fz-16" -> font-size: 1rem;
+// *   class="_fz-md-24" -> [md以上] font-size: 1.5rem;
+// ************************************************
+$configMap: (
+  prefix: _fz,
+  propName: font-size,
+  props: (
+    12: rem(12),
+    14: rem(14),
+    16: rem(16),
+    18: rem(18),
+    20: rem(20),
+    22: rem(22),
+    24: rem(24),
+    32: rem(32),
+    35: rem(35),
+    38: rem(38),
+    39: rem(39),
+    40: rem(40),
+    60: rem(60),
+    64: rem(64),
+  )
+);
+$isImportant: true;
+
+@include foreach-helper($configMap, $isImportant);
+@include media-foreach-helper($configMap, $isImportant);

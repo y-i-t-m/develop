@@ -1,0 +1,22 @@
+// **
+// * display調整用ヘルパークラス
+// * [example]
+// *   class="_d-none" -> display: none
+// *   class="_d-none _d-md-block" -> [md以上] display: block
+// ************************************************
+$configMap: (
+  prefix: _d,
+  propName: display,
+  props: (
+    block: block,
+    flex: flex,
+    inline: inline,
+    inline-block: inline-block,
+    inline-flex: inline-flex,
+    none: none
+  )
+);
+$isImportant: true;
+
+@include foreach-helper($configMap, $isImportant);
+@include media-foreach-helper($configMap, $isImportant);

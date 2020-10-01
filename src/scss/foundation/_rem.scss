@@ -1,0 +1,9 @@
+// **
+// * pxをremに変換
+// * @param {Interger} $lines 表示する行数
+// * @param {Number} $line-height 計算に使用する行高
+// * @return {String} 返還後の値[rem]
+// ************************************************ */
+@function rem($px) {
+  @return $px / 16 * 1rem;
+}

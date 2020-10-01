@@ -1,0 +1,105 @@
+// * margin調整用ヘルパークラス
+// * [example]
+// *   class="_mt-0" -> margin-left: 0;
+// *   class="_mt-md-auto" -> [md以上] margin-top: auto;
+// ************************************************
+$configMap: (
+        prefix: _mt,
+        propName: margin-top,
+        props: (
+                0: 0,
+                8: rem(8),
+                16: rem(16),
+                24: rem(24),
+                32: rem(32),
+                40: rem(40),
+                48: rem(48),
+                64: rem(64),
+                72: rem(72),
+                80: rem(80),
+                96: rem(96),
+                120: rem(120),
+                auto: auto
+        )
+);
+$isImportant: true;
+
+@include foreach-helper($configMap, $isImportant);
+@include media-foreach-helper($configMap, $isImportant);
+
+// * margin調整用ヘルパークラス
+// * [example]
+// *   class="_mr-0" -> margin-left: 0;
+// *   class="_mr-md-auto" -> [md以上] margin-right: auto;
+// ************************************************
+$configMap: (
+        prefix: _mr,
+        propName: margin-right,
+        props: (
+                0: 0,
+                8: rem(8),
+                16: rem(16),
+                32: rem(32),
+                40: rem(40),
+                48: rem(48),
+                64: rem(64),
+                auto: auto
+        )
+);
+$isImportant: true;
+
+@include foreach-helper($configMap, $isImportant);
+@include media-foreach-helper($configMap, $isImportant);
+
+// * margin調整用ヘルパークラス
+// * [example]
+// *   class="_mb-0" -> margin-left: 0;
+// *   class="_mb-md-auto" -> [md以上] margin-bottom: auto;
+// ************************************************
+$configMap: (
+        prefix: _mb,
+        propName: margin-bottom,
+        props: (
+                0: 0,
+                8: rem(8),
+                16: rem(16),
+                24: rem(24),
+                32: rem(32),
+                40: rem(40),
+                48: rem(48),
+                64: rem(64),
+                72: rem(72),
+                80: rem(80),
+                96: rem(96),
+                120: rem(120),
+                auto: auto
+        )
+);
+$isImportant: true;
+
+@include foreach-helper($configMap, $isImportant);
+@include media-foreach-helper($configMap, $isImportant);
+
+// * margin調整用ヘルパークラス
+// * [example]
+// *   class="_ml-0" -> margin-left: 0;
+// *   class="_ml-md-auto" -> [md以上] margin-left: auto;
+// ************************************************
+$configMap: (
+        prefix: _ml,
+        propName: margin-left,
+        props: (
+                0: 0,
+                8: rem(8),
+                16: rem(16),
+                32: rem(32),
+                40: rem(40),
+                48: rem(48),
+                64: rem(64),
+                auto: auto
+        )
+);
+$isImportant: true;
+
+@include foreach-helper($configMap, $isImportant);
+@include media-foreach-helper($configMap, $isImportant);
