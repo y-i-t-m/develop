@@ -30,7 +30,7 @@ module.exports = (env, argv) => {
           loader: 'babel-loader',
         },
         {
-          test: /\.(scss|css)$/,
+          test: /\.(scss)$/,
           exclude: /node_modules/,
           use: [{
               // cssを取り除く
